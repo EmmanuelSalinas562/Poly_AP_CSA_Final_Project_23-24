@@ -1,5 +1,6 @@
 package com.poly.polyapcsafinalproject23_24;
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,17 +13,13 @@ public class GameSalinasEmmanuel extends GameActivity {
     //instance variables
     //   variables you plan to use throughout the adventure
     private TextView tvTitle, tvSubtitle, tvStoryText;
-
-    private ImageView tvStory;
-
-    private Button btn1, btn2;
-
+    private ImageView ivStory;
+    private Button btn1, btn2, btn3;
     private boolean isWon;
-
     private int numLives;
-    public void run()
-    {
-        setContentView(R.layout.activity_game_2_button);
+    @Override
+    protected void run() {
+        setContentView(R.layout.activity_game_3_button);
 
         tvTitle = findViewById(R.id.tv_title_txt);
         tvSubtitle = findViewById(R.id.tv_subtitle);
@@ -30,51 +27,84 @@ public class GameSalinasEmmanuel extends GameActivity {
         ivStory = findViewById(R.id.iv_story);
         btn1 = findViewById(R.id.btn_1);
         btn2 = findViewById(R.id.btn_2);
+        btn3 = findViewById(R.id.btn_3);
 
         //initialize number of lives
         numLives = 5;
         //create a scanner object for user input
-
-
         //display project title and description
-        System.out.println("An Abnormal Monday - High School Edition");
-        System.out.println("\nYou wake up in your bed at 8:00am. You have free will.");
+        tvTitle.setText("An Abnormal Monday - High School Edition");
+        tvSubtitle.setText("\nYou wake up in your bed at 8:00am. You have free will.");
 
         start();
     }
 
+    private void setAllBtnsVisible()
+    {
+        btn1.setVisibility(View.VISIBLE);
+        btn2.setVisibility(View.VISIBLE);
+        btn3.setVisibility(View.VISIBLE);
+    }
+
+    )
+
     private void start()
     {
-        System.out.println("\nWhat will you do?");
-        System.out.println("1.Go to school\n2.Stay home\n3.Ditch school");
+        isWon = false;
 
-        if(choice == 1)
-        {
-            goToSchool();
-        }
-        else if (choice == 2)
-        {
-            stayHome();
-        }
-        else if (choice == 3)
-        {
-            ditchSchool();
-        } //Go to school path
+        tvStoryText.setText("What will you do?");
+
+        setAllBtnsVisible();
+        btn1.setText("Go to school");
+        btn2.setText("Stay home");
+        btn3.setText("Dtich school");
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToSchool();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stayHome();
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ditchSchool();
+            }
+        });
+
+
     }
 
     private void goToSchool()
     {
-        System.out.println("Which choice will you make at school?");
-        System.out.println("1.Go to class\n2.Ditch your 1st period");
+        tvStoryText.setText("Which choice will you make at school?");
 
-        if (choice == 1)
-        {
-            goToClass();
-        }
-        else if (choice == 2)
-        {
-            ditchClass();
-        }
+        setAllBtnsVisible();
+        btn1.setText("Go to class");
+        btn2.setText("Ditch your 1st period");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToClass();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ditchClass();
+            }
+        });
     }
 
     private void goToClass()

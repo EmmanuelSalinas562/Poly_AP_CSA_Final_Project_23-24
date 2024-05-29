@@ -34,7 +34,7 @@ public class GameSalinasEmmanuel extends GameActivity {
         //create a scanner object for user input
         //display project title and description
         tvTitle.setText("An Abnormal Monday - High School Edition");
-        tvSubtitle.setText("\nYou wake up in your bed at 8:00am. You have free will.");
+        tvSubtitle.setText("You wake up in your bed at 8:00am. You have free will.");
 
         start();
     }
@@ -109,8 +109,11 @@ public class GameSalinasEmmanuel extends GameActivity {
 
     private void goToClass()
     {
-        System.out.println("You have a sub 1st period. You start to get bored because its math class. What will you do next?");
-        System.out.println("1.Take your phone out\n2.Focus");
+        tvStoryText.setText("You have a sub 1st period. You start to get bored because its math class. What will you do next?");
+        setAllBtnsVisible();
+        btn1.setText("Take your phone out");
+        btn2.setText("Focus");
+        btn3.setVisibility(View.INVISIBLE);
 
         if (choice == 1)
         {

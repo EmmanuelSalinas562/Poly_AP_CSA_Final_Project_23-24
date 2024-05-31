@@ -115,17 +115,51 @@ public class GameSalinasEmmanuel extends GameActivity {
         btn2.setText("Focus");
         btn3.setVisibility(View.INVISIBLE);
 
-        if (choice == 1)
-        {
-            System.out.println("The sub sees you on your phone. He takes it away and you get expelled from school. You lose.");
-            defeat();
-        }
-        else if (choice == 2)
-        {
-            System.out.println("You got really bored and end up falling asleep. You wake up and its pitch black. Then someone takes off a blindfold that you had on. Your in the back of a truck, you see a sign up ahead that says North Korea. You lose");
-            defeat();
-        }
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takePhoneOut();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Focus();
+            }
+        });
+
+
     }
+
+    private void takePhoneOut()
+    {
+        isWon true;
+        ivStoryText.setText("The sub sees you on your phone. He takes it away and you get expelled from school. You lose.");
+
+        setAllBtnsVisible();
+        btn1.setText("next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                end();
+            }
+        });
+
+    }
+
+    private void Focus()
+    {
+
+        ivStoryText.setText("You got really bored and end up falling asleep. You wake up and its pitch black. Then someone takes off a blindfold that you had on. Your in the back of a truck, you see a sign up ahead that says North Korea. You lose");
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+
 
 
     private void ditchClass()

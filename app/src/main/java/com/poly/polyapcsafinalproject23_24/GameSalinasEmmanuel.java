@@ -159,128 +159,324 @@ public class GameSalinasEmmanuel extends GameActivity {
         setAllBtnsVisible();
         btn1.setText("Next");
         btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                end();
+            }
+        });
+    }
+
 
 
 
     private void ditchClass()
     {
-        System.out.println("You decided to ditch class. You have to be careful to not get caught. What your next move?");
-        System.out.println("1.Walk around the hallways\n2.Hide in the bathroom");
+        tvStoryText.setText("You decided to ditch class. You have to be careful to not get caught. What your next move?");
+        setAllBtnsVisible();
+        btn1.setText("walk around the hallways");
+        btn2.setText("Hide in the bathroom");
+        btn3.setVisibility(View.INVISIBLE);
 
-        if(choice == 1)
-        {
-            System.out.println("Your walking around the hallways roaming free. You get caught by a staff and he realizes you're ditching. You get sent to the Gulag. You lose");
-            defeat();
-        }
-        else if (choice == 2)
-        {
-            System.out.println("You hide in the bathroom until next period starts. You go to your next classes and finish school and go home. You win");
-            defeat();
-        }
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                walkAround();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HideInBathroom();
+            }
+        });
     }
+
+    private void walkAround()
+    {
+
+        isWon = false;
+        tvStoryText.setText("Your walking around the hallways roaming free. You get caught by a staff and he realizes you're ditching. You get sent to the Gulag. You lose");
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                end();
+            }
+        });
+    }
+
+    private void HideInBathroom()
+    {
+        isWon = true;
+        tvStoryText.setText("You hide in the bathroom until next period starts. You go to your next classes and finish school and go home. You win");
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                end();
+            }
+        });
+
+    }
+
+
+
+
 
 
     private void stayHome()
     {
-        System.out.println("You stayed home, whats the next move.");
-        System.out.println("1.Stay in bed\n2.Grind and do homework");
+        tvStoryText.setText("You stayed home, whats the next move.");
 
-        if (choice == 1)
-        {
-            stayInBed();
-        }
-        else if (choice == 2)
-        {
-            doHomework();
-        }
+        setAllBtnsVisible();
+        btn1.setText("stay in bed");
+        btn2.setText("Grind and do homework");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stayInBed();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doHomework();
+            }
+        });
     }
+
+
 
 
     private void stayInBed()
     {
-        System.out.println("You stay in bed and your mom walks in. She asks why you didnt go to school. What do you tell her?");
-        System.out.println("1.Pretend your ill");
-        System.out.println("2.Misbehave");
 
-        if (choice == 1)
-        {
-            fakeIllness();
-        }
-        else if (choice == 2)
-        {
-            misBehave();
-        }
+        tvStoryText.setText("You stay in bed and your mom walks in. She asks why you didnt go to school. What do you tell her?");
+        setAllBtnsVisible();
+        btn1.setText("pretend your ill");
+        btn2.setText("misbehave");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fakeIllness();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                misBehave();
+            }
+        });
     }
+
     private void fakeIllness()
     {
-        System.out.println("You lie and tell her your sick. She checked your temperature and she realizes your lying. How do you decide to resolve this problem?");
-        System.out.println("1.Just play it safe and go to school\n2.Pretend your dying");
+        tvStoryText.setText("You lie and tell her your sick. She checked your temperature and she realizes your lying. How do you decide to resolve this problem?");
+        setAllBtnsVisible();
+        btn1.setText("Just play it safe and go to school");
+        btn2.setText("pretend your dying");
+        btn3.setVisibility(View.INVISIBLE);
 
-        if (choice == 1)
-        {
-            System.out.println("You end up going to school so you dont get in trouble. you win");
-            start();
-        }
-        else if (choice == 2)
-        {
-            System.out.println("You hyperventilate to pass out on purpose. Your plan backfired, you die from a lack of oxygen. You lose");
-            defeat();
-        }
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playItSafe();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pretendYourDying();
+            }
+        });
+    }
+
+    private void playItSafe()
+    {
+        isWon = true;
+        tvStoryText.setText("You end up going to school so you dont get in trouble. you win");
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defeat();
+            }
+        });
+    }
+
+    private void pretendYourDying()
+    {
+        iwWon = false;
+        tvStoryText.setText("You hyperventilate to pass out on purpose. Your plan backfired, you die from a lack of oxygen. You lose");
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defeat();
+            }
+        });
+
+
     }
 
 
     private void misBehave()
     {
-        System.out.println("You tell her you didn't feel like it. She grabs the belt and beats you. You lose");
-        defeat();
+        isWon = false;
+        tvStoryText.setText("You tell her you didn't feel like it. She grabs the belt and beats you. You lose");
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defeat();
+            }
+        });
+
     }
-
-
     private void doHomework()
     {
-        System.out.println("You decide to do homework and your mom walks in and asks why you didn't go to school. How do you respond to her?");
-        System.out.println("1.Be rude to her\n2.Tell her a valid reason");
+        tvStoryText.setText("You decide to do homework and your mom walks in and asks why you didn't go to school. How do you respond to her?");
+        setAllBtnsVisible();
+        btn1.setText("be rude to her");
+        btn2.setText("tell her a valid reason");
+        btn3.setVisibility(View.INVISIBLE);
 
-        if (choice == 1)
-        {
-            System.out.println("You rudely tell her your gonna stay home and do homework because you feel like it. She gets mad. You lose");
-            defeat();
-        }
-        else if (choice == 2)
-        {
-            System.out.println("You tell her that your gonna catch up on missing assignments. She let's it slide. You win");
-            start();
-        }
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                beRude();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sayAValidReason();
+            }
+        });
     }
 
+    private void beRude()
+    {
+        isWon = false;
+        tvStoryText.setText("You rudely tell her your gonna stay home and do homework because you feel like it. She gets mad. You lose");
 
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defeat();
+            }
+        });
+    }
+
+    private void sayAValidReason()
+    {
+        isWon = true;
+        tvStoryText.setText("You tell her that your gonna catch up on missing assignments. She let's it slide. You win");
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defeat();
+            }
+        });
+    }
 
     private void ditchSchool()
     {
-        System.out.println("You decided to ditch school, How will you spend your time?");
-        System.out.println("1.Meet up with a friend\n2.Walk around the city");
+        tvStoryText.setText("You decided to ditch school, How will you spend your time?");
 
-        if (choice == 1)
-        {
-            meetUpWithFriend();
-        }
-        else if (choice == 2)
-        {
-            walkTheCity();
-        }
+        setAllBtnsVisible();
+        btn1.setText("meet up with a friend");
+        btn2.setText("walk around the city");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                meetUpWithFriend();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                walkTheCity();
+            }
+        });
     }
-
     private void meetUpWithFriend()
     {
-        System.out.println("You and your friend meet up and go to a mall. While shopping your friend gets into a problem with someone in the store over shoes. What is the smart play?");
-        System.out.println("1.Just stand there and watch\n2.Walk out of the store");
+        tvStoryText.setText("You and your friend meet up and go to a mall. While shopping your friend gets into a problem with someone in the store over shoes. What is the smart play?");
 
-        if(choice == 1)
-        {
-            standLikeNpc();
-        }
-        else if (choice == 2)
-        {
+
+        setAllBtnsVisible();
+        btn1.setText("just stand there and watch");
+        btn2.setText("walk out of the store");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                standLikeNpc();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                walkOutStore();
+            }
+        });
+    }
+
+    private void walkOutStore()
+
+
+
             System.out.println("You and your friend walk out in shame. Your friend didn't get the shoes he wanted. You lose");
             defeat();
         }

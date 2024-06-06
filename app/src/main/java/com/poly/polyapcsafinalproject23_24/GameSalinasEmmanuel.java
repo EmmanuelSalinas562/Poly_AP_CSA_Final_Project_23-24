@@ -1,5 +1,6 @@
 package com.poly.polyapcsafinalproject23_24;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -46,10 +47,11 @@ public class GameSalinasEmmanuel extends GameActivity {
         btn3.setVisibility(View.VISIBLE);
     }
 
-    )
+
 
     private void start()
     {
+        ivStory.setImageResource(R.drawable.im_salinasemmanuel_waknigup);
         isWon = false;
 
         tvStoryText.setText("What will you do?");
@@ -85,6 +87,7 @@ public class GameSalinasEmmanuel extends GameActivity {
 
     private void goToSchool()
     {
+        ivStory.setImageResource(R.drawable.im_salinasemmanuel_gotoclass);
         tvStoryText.setText("Which choice will you make at school?");
 
         setAllBtnsVisible();
@@ -134,8 +137,8 @@ public class GameSalinasEmmanuel extends GameActivity {
 
     private void takePhoneOut()
     {
-        isWon true;
-        ivStoryText.setText("The sub sees you on your phone. He takes it away and you get expelled from school. You lose.");
+        isWon = true;
+        tvStoryText.setText("The sub sees you on your phone. He takes it away and you get expelled from school. You lose.");
 
         setAllBtnsVisible();
         btn1.setText("next");
@@ -145,7 +148,7 @@ public class GameSalinasEmmanuel extends GameActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                end();
+                defeat();
             }
         });
 
@@ -154,7 +157,7 @@ public class GameSalinasEmmanuel extends GameActivity {
     private void Focus()
     {
 
-        ivStoryText.setText("You got really bored and end up falling asleep. You wake up and its pitch black. Then someone takes off a blindfold that you had on. Your in the back of a truck, you see a sign up ahead that says North Korea. You lose");
+        tvStoryText.setText("You got really bored and end up falling asleep. You wake up and its pitch black. Then someone takes off a blindfold that you had on. Your in the back of a truck, you see a sign up ahead that says North Korea. You lose");
 
         setAllBtnsVisible();
         btn1.setText("Next");
@@ -164,7 +167,7 @@ public class GameSalinasEmmanuel extends GameActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                end();
+                defeat();
             }
         });
     }
@@ -208,7 +211,7 @@ public class GameSalinasEmmanuel extends GameActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                end();
+                defeat();
             }
         });
     }
@@ -226,7 +229,7 @@ public class GameSalinasEmmanuel extends GameActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                end();
+                defeat();
             }
         });
 
@@ -330,7 +333,7 @@ public class GameSalinasEmmanuel extends GameActivity {
 
     private void pretendYourDying()
     {
-        iwWon = false;
+        isWon = false;
         tvStoryText.setText("You hyperventilate to pass out on purpose. Your plan backfired, you die from a lack of oxygen. You lose");
         setAllBtnsVisible();
         btn1.setText("Next");
@@ -474,48 +477,138 @@ public class GameSalinasEmmanuel extends GameActivity {
     }
 
     private void walkOutStore()
+    {
+        isWon = false;
+        tvStoryText.setText("You and your friend walk out in shame. Your friend didn't get the shoes he wanted. You lose");
 
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
 
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defeat();
+            }
+        });
 
-            System.out.println("You and your friend walk out in shame. Your friend didn't get the shoes he wanted. You lose");
-            defeat();
-        }
     }
 
     private void standLikeNpc()
     {
-        System.out.println("You wait there and watch what is going down, it starts to get more tense and looks like the guy is about to swing. How do you resolve the issue?");
-        System.out.println("1.Just stand there again\n2.Punch the guy");
+        tvStoryText.setText("You wait there and watch what is going down, it starts to get more tense and looks like the guy is about to swing. How do you resolve the issue?");
 
-        if (choice == 1)
-        {
-            System.out.println("You decide to stand there and do nothing. Your friend and the guy fight and the staff break it up. They call your parents to tell them what happened. You get them in trouble. You lose");
-            defeat();
-        }
-        else if (choice == 2)
-        {
-            System.out.println("You punch the guy. he punches you back, you get knocked out. You lose.");
-            defeat();
-        }
+        setAllBtnsVisible();
+        btn1.setText("just stand there again");
+        btn2.setText("punch the guy");
+        btn3.setVisibility(View.INVISIBLE);
 
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                standThereAgain();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                punchTheGuy();
+            }
+        });
+    }
+
+    private void standThereAgain()
+    {
+        isWon = false;
+        tvStoryText.setText("You decide to stand there and do nothing. Your friend and the guy fight and the staff break it up. They call your parents to tell them what happened. You get them in trouble. You lose");
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defeat();
+            }
+        });
+
+    }
+
+    private void punchTheGuy()
+    {
+        isWon = false;
+        tvStoryText.setText("You punch the guy. he punches you back, you get knocked out. You lose.");
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
     }
 
 
     private void walkTheCity()
     {
-        System.out.println("You go on a walk around the city. A man approaches you and asks for a dollar. What will you do next?");
-        System.out.println("1.Lie and say you dont have money\n2.Give him the dollar");
+        tvStoryText.setText("You go on a walk around the city. A man approaches you and asks for a dollar. What will you do next?");
 
-        if  (choice == 1)
-        {
-            System.out.println("Your lie didn't work, he sees your wallet poking out of your pocket. He slaps you and you die. You lose");
-            defeat();
-        }
-        else if (choice == 2)
-        {
-            System.out.println("You give him a dollar. He is grateful, You win");
-            start();
-        }
+        setAllBtnsVisible();
+        btn1.setText("lie and say you dont have money");
+        btn2.setText("give him the dollar");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lieToHim();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                giveHimDollar();
+            }
+        });
+
+
+
+    }
+
+    private void lieToHim()
+    {
+        isWon = false;
+        tvStoryText.setText("Your lie didn't work, he sees your wallet poking out of your pocket. He slaps you and you die. You lose");
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defeat();
+            }
+        });
+    }
+
+    private void giveHimDollar()
+    {
+        tvStoryText.setText("You give him a dollar. He is grateful, You win");
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defeat();
+            }
+        });
     }
 
 
@@ -530,7 +623,7 @@ public class GameSalinasEmmanuel extends GameActivity {
         numLives--;
 
         //clear console, display text, etc
-        System.out.println("game over, try again.");
+        tvStoryText.setText("game over, try again.");
 
         //determine if player gets to play again
         if (numLives > 0)
@@ -540,7 +633,16 @@ public class GameSalinasEmmanuel extends GameActivity {
         }
         else
         {
-            System.out.println("GAME OVER");
+            tvStoryText.setText("GAME OVER");
+            btn1.setText("Back to menu");
+
+            btn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(GameSalinasEmmanuel.this, MainActivity.class));
+                }
+            });
+
         }
     }
 }
